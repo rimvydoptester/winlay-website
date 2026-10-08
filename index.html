@@ -4,21 +4,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#0b1120">
-  <meta name="description" content="Join the official Winlay Android beta testing program.">
+  <meta name="theme-color" content="#080f20">
+  <meta name="description" content="Register for Winlay Android Closed Beta Testing.">
   <title>Winlay — Official Beta Testing</title>
 
   <style>
     :root {
       color-scheme: dark;
-      --bg: #0b1120;
-      --card: #182337;
+      --bg: #080f20;
+      --card: #17243b;
+      --border: #2c3b55;
       --text: #f8fafc;
-      --muted: #aabbd0;
-      --blue: #3b82f6;
+      --muted: #a9bad0;
+      --blue: #397cf6;
     }
 
     * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
 
     body {
       margin: 0;
@@ -30,62 +33,72 @@
 
     header {
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
       gap: 15px;
       padding: 20px 7%;
-      border-bottom: 1px solid #263349;
+      border-bottom: 1px solid var(--border);
     }
 
     .logo {
-      font-size: 26px;
+      font-size: 27px;
       font-weight: 800;
-      color: #fff;
+      letter-spacing: -1px;
+    }
+
+    .logo span { color: #60a5fa; }
+
+    nav {
+      display: flex;
+      gap: 20px;
     }
 
     nav a {
       color: var(--muted);
       text-decoration: none;
-      margin-left: 15px;
     }
 
-    nav a:hover { color: #fff; }
+    nav a:hover { color: white; }
 
     .hero {
       text-align: center;
-      padding: 85px 20px 65px;
+      padding: 90px 20px 75px;
       max-width: 850px;
       margin: auto;
     }
 
     .badge {
       display: inline-block;
-      padding: 6px 15px;
+      padding: 7px 16px;
       border-radius: 30px;
-      background: #153c35;
+      background: #153d35;
       color: #86efac;
       font-size: 14px;
+      font-weight: bold;
     }
 
     h1 {
-      font-size: clamp(38px, 7vw, 65px);
-      margin: 20px 0;
-      line-height: 1.15;
+      font-size: clamp(40px, 7vw, 70px);
+      line-height: 1.1;
+      margin: 25px 0;
     }
 
-    h1 span { color: var(--blue); }
+    h1 span { color: #60a5fa; }
 
     .subtitle {
-      color: var(--muted);
       font-size: 18px;
+      color: var(--muted);
+      max-width: 650px;
+      margin: auto;
     }
 
     .buttons {
       display: flex;
       justify-content: center;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 30px;
+      gap: 14px;
+      margin-top: 35px;
     }
 
     .btn {
@@ -93,36 +106,37 @@
       background: var(--blue);
       color: white;
       text-decoration: none;
+      padding: 14px 24px;
+      border-radius: 11px;
       font-weight: bold;
-      padding: 14px 23px;
-      border-radius: 10px;
-      transition: background .2s;
+      transition: background .2s, transform .2s;
     }
 
-    .btn:hover { background: #2563eb; }
-
-    .btn.secondary {
-      background: #29384f;
+    .btn:hover {
+      background: #2563eb;
+      transform: translateY(-2px);
     }
 
-    .btn.secondary:hover { background: #354966; }
+    .btn.secondary { background: #293950; }
+    .btn.secondary:hover { background: #364c69; }
 
     section {
-      padding: 35px 7% 70px;
-      max-width: 1100px;
+      max-width: 1120px;
+      padding: 45px 7% 70px;
       margin: auto;
+      scroll-margin-top: 30px;
     }
 
     h2 {
-      font-size: 30px;
+      font-size: 32px;
       text-align: center;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
-    .section-description {
+    .description {
       text-align: center;
       color: var(--muted);
-      margin-bottom: 30px;
+      margin-bottom: 35px;
     }
 
     .grid {
@@ -133,40 +147,55 @@
 
     .card {
       background: var(--card);
-      border: 1px solid #2c3b51;
-      border-radius: 16px;
-      padding: 25px;
+      border: 1px solid var(--border);
+      border-radius: 17px;
+      padding: 26px;
     }
 
-    .card .number {
+    .card h3 { margin: 12px 0; }
+    .card p { color: var(--muted); }
+
+    .icon {
       font-size: 32px;
-      font-weight: bold;
+    }
+
+    .number {
+      font-size: 34px;
+      font-weight: 800;
       color: #93c5fd;
     }
 
-    .card h3 { margin-bottom: 8px; }
-
-    .card p { color: var(--muted); }
-
     .notice {
-      max-width: 800px;
-      margin: 25px auto 0;
-      color: var(--muted);
+      max-width: 850px;
+      margin: 35px auto 0;
       text-align: center;
+      color: var(--muted);
       font-size: 14px;
     }
 
-    footer {
+    .cta {
       text-align: center;
-      border-top: 1px solid #263349;
-      padding: 25px;
-      color: var(--muted);
+      background: #12213a;
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 45px 20px;
     }
 
-    @media (max-width: 700px) {
-      header { flex-direction: column; }
+    .cta h2 { margin-top: 0; }
+
+    footer {
+      text-align: center;
+      border-top: 1px solid var(--border);
+      padding: 30px 20px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    @media (max-width: 750px) {
+      header { justify-content: center; }
       .grid { grid-template-columns: 1fr; }
-      .hero { padding-top: 55px; }
+      .hero { padding-top: 60px; }
+      .card { padding: 23px; }
     }
   </style>
 </head>
@@ -174,7 +203,8 @@
 <body>
 
   <header>
-    <div class="logo">Winlay</div>
+    <div class="logo">Win<span>lay</span></div>
+
     <nav>
       <a href="#home">Home</a>
       <a href="#features">Features</a>
@@ -184,128 +214,140 @@
 
   <main>
     <div class="hero" id="home">
-      <div class="badge">Android Beta Testing</div>
+      <div class="badge">● Closed Beta Testing</div>
 
       <h1>Welcome to <span>Winlay</span></h1>
 
       <p class="subtitle">
-        Discover operating system images for PC emulators.
-        Join our Android beta testing program and help
-        make Winlay better.
+        Explore Windows and Android operating system
+        images for PC emulators. Join the Winlay Android
+        beta testing program and help improve the app.
       </p>
 
       <div class="buttons">
-        <a class="btn" id="group-link" href="#testing">
-          Become a Tester
+        <a class="btn"
+           href="https://forms.gle/UzHsd1M9J2rtFbUk8"
+           target="_blank"
+           rel="noopener noreferrer">
+          Become a Beta Tester
         </a>
-        <a class="btn secondary" id="play-link" href="#testing">
-          Get Winlay on Google Play
+
+        <a class="btn secondary" href="#testing">
+          How to Install
         </a>
       </div>
     </div>
 
     <section id="features">
       <h2>Explore Winlay</h2>
-      <p class="section-description">
-        An Android app designed to help you find
-        operating system image downloads.
+      <p class="description">
+        Discover what Winlay offers.
       </p>
 
       <div class="grid">
         <div class="card">
+          <div class="icon">🖥️</div>
           <h3>Windows Images</h3>
-          <p>Browse available Windows image downloads.</p>
+          <p>
+            Browse available Windows operating system
+            images for compatible PC emulators.
+          </p>
         </div>
 
         <div class="card">
+          <div class="icon">📱</div>
           <h3>Android Images</h3>
-          <p>Discover Android images for supported emulators.</p>
+          <p>
+            Explore Android operating system images
+            and download resources.
+          </p>
         </div>
 
         <div class="card">
+          <div class="icon">🚀</div>
           <h3>Beta Updates</h3>
-          <p>Try new features and help improve Winlay.</p>
+          <p>
+            Test new Winlay features and help
+            improve future versions.
+          </p>
         </div>
       </div>
     </section>
 
     <section id="testing">
-      <h2>How to Become a Tester</h2>
-      <p class="section-description">
-        Follow these three simple steps.
+      <h2>How to Join Closed Testing</h2>
+
+      <p class="description">
+        Follow these three simple steps to get Winlay.
       </p>
 
       <div class="grid">
         <div class="card">
           <div class="number">01</div>
-          <h3>Join the Tester Group</h3>
+          <h3>Register</h3>
           <p>
-            Join our Google Group using the Google
-            account you use on your Android device.
+            Submit your Google account email address
+            using the Winlay registration form.
           </p>
-          <a class="btn" id="group-step-link" href="#testing">
-            Join Group
+          <a class="btn"
+             href="https://forms.gle/UzHsd1M9J2rtFbUk8"
+             target="_blank"
+             rel="noopener noreferrer">
+            Register Now
           </a>
         </div>
 
         <div class="card">
           <div class="number">02</div>
-          <h3>Join Google Play Testing</h3>
+          <h3>Get Approved</h3>
           <p>
-            Open the official Google Play testing link
-            and accept the invitation to become a tester.
+            The Winlay testing team will review your
+            registration and add your email address
+            to the approved Google Play tester list.
           </p>
-          <a class="btn" id="opt-in-link" href="#testing">
-            Join Testing
-          </a>
         </div>
 
         <div class="card">
           <div class="number">03</div>
           <h3>Install Winlay</h3>
           <p>
-            After joining the testing program, install
-            Winlay through Google Play.
+            Once approved, use the Google Play
+            opt-in link provided by the testing team.
+            Accept the invitation, then install Winlay.
           </p>
-          <a class="btn" id="install-link" href="#testing">
-            Install Winlay
-          </a>
         </div>
       </div>
 
       <p class="notice">
-        Closed testing access is required. If you cannot
-        install Winlay, confirm that your Google account
-        is included in the testing program.
+        Winlay is currently available through Google Play
+        Closed Testing. Registration does not automatically
+        grant access. You must be approved before installing.
       </p>
+    </section>
+
+    <section id="join">
+      <div class="cta">
+        <h2>Ready to Test Winlay?</h2>
+
+        <p class="description">
+          Join the beta program and help us build
+          a better Winlay experience.
+        </p>
+
+        <a class="btn"
+           href="https://forms.gle/UzHsd1M9J2rtFbUk8"
+           target="_blank"
+           rel="noopener noreferrer">
+          Join Winlay Beta
+        </a>
+      </div>
     </section>
   </main>
 
   <footer>
-    Winlay Beta Testing · Made for Android
+    © 2026 Winlay. All rights reserved.
+    <p>Winlay Android Beta Testing</p>
   </footer>
-
-  <script>
-    // Replace these placeholders with your real links.
-    const GOOGLE_GROUP_URL = "";
-    const GOOGLE_PLAY_OPT_IN_URL = "";
-    const GOOGLE_PLAY_APP_URL = "";
-
-    function setLink(id, url) {
-      if (!url) return;
-
-      const element = document.getElementById(id);
-      element.href = url;
-      element.target = "_blank";
-      element.rel = "noopener noreferrer";
-    }
-
-    setLink("group-link", GOOGLE_GROUP_URL);
-    setLink("group-step-link", GOOGLE_GROUP_URL);
-    setLink("play-link", GOOGLE_PLAY_OPT_IN_URL);
-    setLink("opt-in-link", GOOGLE_PLAY_OPT_IN_URL);
-    setLink("install-link", GOOGLE_PLAY_APP_URL);
-  </script>
 
 </body>
 </html>
